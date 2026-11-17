@@ -2,57 +2,58 @@ import Link from "next/link";
 
 export default function ParentDashboard() {
   const results = [
-    { subject: "Mathematics", grade: "A", marks: "92/100", status: "Pass" },
-    { subject: "Physics", grade: "B+", marks: "85/100", status: "Pass" },
-    { subject: "English", grade: "A-", marks: "88/100", status: "Pass" },
-    { subject: "Chemistry", grade: "B", marks: "78/100", status: "Pass" },
+    { subject: "Mathematics", grade: "A", marks: 92, color: "#6366f1" },
+    { subject: "Physics", grade: "B+", marks: 85, color: "#0ea5e9" },
+    { subject: "English", grade: "A−", marks: 88, color: "#10b981" },
+    { subject: "Chemistry", grade: "B", marks: 78, color: "#f59e0b" },
   ];
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "900px", margin: "0 auto" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem" }}>
-        <Link href="/" style={{ color: "#6b7280", textDecoration: "none" }}>← Back</Link>
-        <h1 style={{ fontSize: "1.5rem", fontWeight: "800", color: "#1e1b4b" }}>Parent Dashboard</h1>
-      </div>
-
-      <div style={{ background: "white", borderRadius: "1rem", padding: "1.5rem", boxShadow: "0 1px 8px rgba(0,0,0,0.08)", marginBottom: "1.5rem" }}>
+    <div style={{ minHeight: "100vh", background: "#0f172a", fontFamily: "'Segoe UI', system-ui, sans-serif", color: "#f8fafc" }}>
+      <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "1rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "#dbeafe", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem" }}>🎓</div>
-          <div>
-            <p style={{ fontWeight: "700", color: "#111827", fontSize: "1rem" }}>John Doe</p>
-            <p style={{ color: "#6b7280", fontSize: "0.85rem" }}>Class 10-A · Grade 10 · Roll No: 15</p>
-          </div>
-          <span style={{ marginLeft: "auto", background: "#dcfce7", color: "#15803d", padding: "4px 12px", borderRadius: "999px", fontSize: "0.8rem", fontWeight: "600" }}>
-            92% Attendance
-          </span>
+          <Link href="/" style={{ color: "#64748b", textDecoration: "none", fontSize: "0.85rem" }}>← Back</Link>
+          <span style={{ color: "#334155" }}>|</span>
+          <span style={{ color: "#f59e0b", fontWeight: 700, fontSize: "0.9rem" }}>👨‍👩‍👧 Parent Portal</span>
         </div>
       </div>
 
-      <div style={{ background: "white", borderRadius: "1rem", padding: "1.5rem", boxShadow: "0 1px 8px rgba(0,0,0,0.08)" }}>
-        <h2 style={{ fontSize: "1rem", fontWeight: "700", color: "#374151", marginBottom: "1rem" }}>Exam Results</h2>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr style={{ background: "#f9fafb" }}>
-              {["Subject", "Grade", "Marks", "Status"].map(h => (
-                <th key={h} style={{ padding: "0.75rem 1rem", textAlign: "left", fontSize: "0.8rem", fontWeight: "700", color: "#6b7280", borderBottom: "1px solid #e5e7eb" }}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
+      <div style={{ padding: "2rem", maxWidth: "1100px", margin: "0 auto" }}>
+        <h1 style={{ fontSize: "1.75rem", fontWeight: 800, marginBottom: "0.25rem", letterSpacing: "-0.02em" }}>Child's Progress Report</h1>
+        <p style={{ color: "#64748b", fontSize: "0.9rem", marginBottom: "2rem" }}>Academic Year 2026 — Term 1</p>
+
+        {/* Child card */}
+        <div style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(14,165,233,0.1))", border: "1px solid rgba(99,102,241,0.3)", borderRadius: "16px", padding: "1.5rem", marginBottom: "1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "linear-gradient(135deg,#6366f1,#0ea5e9)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", fontWeight: 800 }}>J</div>
+            <div>
+              <p style={{ fontWeight: 800, fontSize: "1.1rem", margin: "0 0 4px" }}>John Doe</p>
+              <p style={{ color: "#94a3b8", fontSize: "0.85rem", margin: 0 }}>Class 10-A · Grade 10 · Roll No: 15</p>
+            </div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <p style={{ color: "#10b981", fontWeight: 700, fontSize: "1.25rem", margin: "0 0 2px" }}>92%</p>
+            <p style={{ color: "#64748b", fontSize: "0.8rem", margin: 0 }}>Attendance</p>
+          </div>
+        </div>
+
+        {/* Results */}
+        <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", padding: "1.5rem" }}>
+          <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#cbd5e1", marginBottom: "1.25rem" }}>Exam Results</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             {results.map(r => (
-              <tr key={r.subject} style={{ borderBottom: "1px solid #f3f4f6" }}>
-                <td style={{ padding: "0.75rem 1rem", fontSize: "0.85rem", fontWeight: "600", color: "#111827" }}>{r.subject}</td>
-                <td style={{ padding: "0.75rem 1rem" }}>
-                  <span style={{ background: "#dbeafe", color: "#1d4ed8", padding: "2px 8px", borderRadius: "999px", fontSize: "0.75rem", fontWeight: "700" }}>{r.grade}</span>
-                </td>
-                <td style={{ padding: "0.75rem 1rem", fontSize: "0.85rem", color: "#374151" }}>{r.marks}</td>
-                <td style={{ padding: "0.75rem 1rem" }}>
-                  <span style={{ background: "#dcfce7", color: "#15803d", padding: "2px 8px", borderRadius: "999px", fontSize: "0.75rem", fontWeight: "600" }}>{r.status}</span>
-                </td>
-              </tr>
+              <div key={r.subject} style={{ display: "flex", alignItems: "center", gap: "1rem", background: "rgba(255,255,255,0.03)", borderRadius: "12px", padding: "1rem 1.25rem" }}>
+                <div style={{ width: "4px", height: "40px", background: r.color, borderRadius: "2px" }} />
+                <p style={{ flex: 1, fontWeight: 600, color: "#f8fafc", margin: 0 }}>{r.subject}</p>
+                <div style={{ flex: 2, background: "rgba(255,255,255,0.05)", borderRadius: "999px", height: "6px", overflow: "hidden" }}>
+                  <div style={{ width: `${r.marks}%`, height: "100%", background: r.color, borderRadius: "999px" }} />
+                </div>
+                <span style={{ color: "#94a3b8", fontSize: "0.85rem", width: "50px", textAlign: "right" }}>{r.marks}/100</span>
+                <span style={{ background: `${r.color}20`, color: r.color, padding: "3px 10px", borderRadius: "999px", fontSize: "0.78rem", fontWeight: 700, width: "40px", textAlign: "center" }}>{r.grade}</span>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   );
