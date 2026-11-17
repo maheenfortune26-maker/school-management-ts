@@ -1,36 +1,68 @@
 import Link from "next/link";
-import { UserRole } from "@/types";
 
-export default function HomePage(): React.ReactElement {
-  const roles: { role: UserRole; label: string; color: string; href: string }[] = [
-    { role: UserRole.ADMIN, label: "Admin Dashboard", color: "bg-purple-600", href: "/admin" },
-    { role: UserRole.TEACHER, label: "Teacher Dashboard", color: "bg-blue-600", href: "/teacher" },
-    { role: UserRole.STUDENT, label: "Student Dashboard", color: "bg-green-600", href: "/student" },
-    { role: UserRole.PARENT, label: "Parent Dashboard", color: "bg-yellow-500", href: "/parent" },
+export default function HomePage() {
+  const roles = [
+    { label: "Admin Dashboard", color: "#7c3aed", href: "/admin" },
+    { label: "Teacher Dashboard", color: "#2563eb", href: "/teacher" },
+    { label: "Student Dashboard", color: "#16a34a", href: "/student" },
+    { label: "Parent Dashboard", color: "#d97706", href: "/parent" },
   ];
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8">
-      <h1 className="text-4xl font-bold text-gray-800 mb-2">🎓 School Management System</h1>
-      <p className="text-gray-500 mb-10 text-center">
-        TypeScript + Next.js + Express · Role-based Dashboards
-      </p>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-xl">
-        {roles.map(({ label, color, href }) => (
-          <Link
-            key={href}
-            href={href}
-            className={`${color} text-white rounded-xl p-6 font-semibold text-lg hover:opacity-90 transition text-center shadow-md`}
-          >
-            {label}
-          </Link>
-        ))}
+    <main style={{
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "2rem",
+      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    }}>
+      <div style={{
+        background: "white",
+        borderRadius: "1.5rem",
+        padding: "3rem",
+        maxWidth: "500px",
+        width: "100%",
+        boxShadow: "0 25px 50px rgba(0,0,0,0.25)",
+        textAlign: "center",
+      }}>
+        <div style={{ fontSize: "3.5rem", marginBottom: "0.5rem" }}>🎓</div>
+        <h1 style={{
+          fontSize: "1.8rem",
+          fontWeight: "800",
+          color: "#1e1b4b",
+          marginBottom: "0.5rem",
+        }}>
+          School Management System
+        </h1>
+        <p style={{ color: "#6b7280", fontSize: "0.9rem", marginBottom: "2rem" }}>
+          TypeScript · Next.js · Express · Role-based Dashboards
+        </p>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
+        }}>
+          {roles.map(({ label, color, href }) => (
+            <Link key={href} href={href} style={{
+              background: color,
+              color: "white",
+              padding: "1rem",
+              borderRadius: "0.75rem",
+              fontWeight: "600",
+              fontSize: "0.85rem",
+              textDecoration: "none",
+              display: "block",
+            }}>
+              {label}
+            </Link>
+          ))}
+        </div>
+        <p style={{ marginTop: "1.5rem", fontSize: "0.75rem", color: "#9ca3af" }}>
+          Select a role to preview its dashboard
+        </p>
       </div>
-
-      <p className="mt-10 text-xs text-gray-400">
-        Select a role to preview its dashboard
-      </p>
     </main>
   );
 }
